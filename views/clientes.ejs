@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Página de Clientes</title>
+  <link href="path/to/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    body{
+      background-color: #1d2b3a;
+    }
+    h1{
+      color: #00dfc4;
+    }
+    h2{
+      color: white;
+    }
+    .delete{
+      background-color: #1d2b3a;
+      color: #00dfc4;
+      border-radius: 8px;
+    }
+    .delete:hover{
+      background-color: rgb(158, 3, 3);
+      color: white;
+      transition: 0.5s;
+    }
+
+    .newBtn{
+      background-color: #1d2b3a;
+      color: #00dfc4;
+      border: 2px solid #00dfc4;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    .newBtn:hover{
+      background-color: #00dfc4;
+      color: white;
+      transition: 0.5s;
+    }
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body class="container">
+  <h1 class="text-center">Carvalho's Gym</h1>
+  <h2 class="text-center">Lista de Clientes</h2>
+  <ul class="list-group pmd-list pmd-card-list pmd-list-avatar">
+    <% clients.forEach((client) => { %>
+      <li class="list-group-item d-flex align-items-center">
+        <a href="/cliente/<%= client.id %>" class="pmd-avatar-list-img"> 
+        <div class="media-body"><%= client.Nome  %></div>
+        </a>
+
+        <form action="/deleteclient" method="post" class="ms-auto">
+
+          <input type="hidden" name="clientId" value="<%= client.id %>">
+          <button type="submit" class="delete">Deletar</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+  <form action="/inputclient" method="get">
+    <button type="submit" class="newBtn mt-3">Novo Registro</button>
+</form>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>

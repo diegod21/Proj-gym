@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add client</title>
+    <link href="path/to/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+     body{
+          background-color: #1d2b3a;
+     }
+     .body{
+        background-color: rgb(170, 170, 170);
+        padding: 10px;
+     }
+     form{
+        margin: auto;
+     }
+    .inputBox{
+    position: relative;
+    width: 250px;
+    margin-bottom: 20px;
+}
+.inputBox input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: #1d2b3a;
+    border-radius: 5px;
+    outline: none;
+    color: white;
+    font-size: 1em;
+}
+
+.inputBox input:hover{
+    border: 1px solid #00dfc4;
+}
+.inputBox span{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+.inputBox input:valid ~ span,.inputBox input:focus ~ span
+{
+    color: #00dfc4;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.75em;
+    padding: 0 10px;
+    background: #1d2b3a;
+    border-left: 1px solid #00dfc4;
+    border-right: 1px solid #00dfc4;
+}
+button{
+    background: #1d2b3a;
+     border: 1px solid #00dfc4;
+     color: #00dfc4;
+     padding: 8px;
+     border-radius: 5px;
+}
+button:hover{
+    background-color: #00dfc4;
+    color: white;
+    transition: 0.5s;
+}
+h1{
+    color: #00dfc4;
+}
+    </style>
+</head>
+<body class="container">
+    <h1 class="text-center">Carvalho's Gym</h1>
+    <div class="body mt-3 rounded">
+        <form action="/addNewClient" method="post" class=" d-flex flex-column w-25 justify-content-center align-items-center mt-3">
+            <div class="inputBox">
+                <input type="text" name="nome" id="nome">
+                <span>Nome</span>
+            </div>
+        
+            <div class="inputBox">
+                <input type="text" name="sobrenome" id="sobrenome">
+                <span>Sobrenome</span>
+            </div>
+        
+            <div class="inputBox">
+                <input type="email" name="email" id="email">
+                <span>E-mail</span>
+            </div>
+            <div class="inputBox">
+                <input type="number" name="tel" id="tel">
+                <span>Telefone</span>
+            </div>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>

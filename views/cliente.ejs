@@ -1,0 +1,133 @@
+<html>
+<head>
+  <title>Informações do Cliente</title>
+  <link href="path/to/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+     body{
+          background-color: #1d2b3a;
+     }
+     .info{
+          background-color: white;
+          padding: 10px;
+          border-radius: 10px;
+     }
+     h1{
+      color: #00dfc4;
+    }
+    .editBtn , .saveBtn{
+     border: 1px solid #00dfc4;
+     color: #00dfc4;
+     padding: 8px;
+    }
+    .editBtn:hover , .saveBtn:hover{
+      background-color: #00dfc4;
+      color: white;
+      transition: 0.5s;
+    }
+    form{
+     margin: auto;
+     color: white;
+    }
+    .inputBox{
+    position: relative;
+    width: 250px;
+    margin-bottom: 20px;
+}
+.inputBox input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: #1d2b3a;
+    border-radius: 5px;
+    outline: none;
+    color: white;
+    font-size: 1em;
+}
+
+.inputBox input:hover{
+    border: 1px solid #00dfc4;
+}
+.inputBox span{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+.inputBox input:valid ~ span, .inputBox input:focus ~ span
+{
+    color: #00dfc4;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #1d2b3a;
+    border-left: 1px solid #00dfc4;
+    border-right: 1px solid #00dfc4;
+}
+
+  </style>
+</head>
+<body class="container">
+     <h1 class="text-center">Carvalho's Gym</h1>
+  <div class="info mt-3">
+       <h2 class="text-center">Informações do Cliente</h2>
+       <p>Nome: <%= client.Nome %></p>
+       <p>Sobrenome: <%= client.sobrenome %></p>
+       <p>Telefone: <%= client.telefone %></p>
+       <p>Email: <%= client.email%></p>
+  </div>
+
+ <div class="editBtn btn mt-3" id="edit" onclick="clickEditBtn()">Editar</div>
+  
+  <form action="/update-cliente/<%= client.id %>" method="post" class="d-none d-flex flex-column w-25 justify-content-center align-items-center mt-3" id="forms">
+    <div class="inputBox">
+         <input type="text" name="nome" id="nome" value="<%= client.Nome %>">
+         <span>Nome</span>
+    </div>
+
+    <div class="inputBox">
+         <input type="text" name="sobrenome" id="sobrenome" value="<%= client.sobrenome %>">
+         <span>Sobrenome</span>
+    </div>
+
+    <div class="inputBox">
+         <input type="number" name="tel" id="tel" value="<%= client.telefone %>">
+         <span>Telefone</span>
+    </div>
+     <div class="inputBox">
+     
+         <input type="email" name="email" id="email" value="<%= client.email %>">
+         <span>E-mail:</span>
+     </div>
+    
+
+    <button type="submit" onclick="clickSaveBtn()" class="saveBtn btn mt-3">Salvar</button>
+  </form>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+ <script>
+
+      function clickEditBtn(){
+           var editBtn = document.getElementById('edit')
+           var form = document.getElementById('forms')
+
+           form.classList.remove('d-none')
+           editBtn.classList.add('d-none')
+
+      }
+      function clickSaveBtn(){
+           var editBtn = document.getElementById('edit')
+           var form = document.getElementById('forms')
+
+           form.classList.add('d-none')
+           editBtn.classList.remove('d-none')
+      }
+ </script>
+</body>
+</html>
+
+
+
