@@ -35,7 +35,7 @@ app.post('/', (req, res) => {
   try {
     const {email , key} = req.body
 
-    if(email === 'diegotesteprog@gmail.com' && key === 'Teste193809'){
+    if(email === 'testeprog@gmail.com' && key === 'Teste193809'){
       res.redirect('/clientes')
     }else{
       console.log("login invalido")
